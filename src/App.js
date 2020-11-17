@@ -10,8 +10,8 @@ const spotify = new SpotifyWebApi();
 
 
 function App() {
-  const [token,setToken] = useState(null);
-  const [{user}, dispatch] = useDataLayerValue();
+  // const [token,setToken] = useState(null);
+  const [{user, token}, dispatch] = useDataLayerValue();
 
 
   //use effect runs code based on a given condition
@@ -21,9 +21,10 @@ function App() {
     const _token = hash.access_token;
 
     if(_token){
-      setToken(_token);
-
-
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      })
 
       spotify.setAccessToken(_token);
       spotify.getMe().then(user => {
@@ -34,20 +35,18 @@ function App() {
         })
       })
     }
-    console.log('I have a token :point ',token);
   }, []);
-  console.log('🧑 ',user);
 
+  
   return (
     <div className="app">
       {
         token ? 
-          <Player/>
+          <Player spotify = {spotify} />
          : 
           <Login/>
         
       }
-      <Login/>
     </div>
   );
 }
