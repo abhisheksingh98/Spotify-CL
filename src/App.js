@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Login from './Login'
 import { getTokenFromUrl } from './spotify';
@@ -11,7 +11,7 @@ const spotify = new SpotifyWebApi();
 
 function App() {
   // const [token,setToken] = useState(null);
-  const [{user, token}, dispatch] = useDataLayerValue();
+  const [{ user , token}, dispatch] = useDataLayerValue();
 
 
   //use effect runs code based on a given condition
