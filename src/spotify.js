@@ -1,6 +1,6 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = "https://spotify-clone-e15ef.firebaseapp.com/";
+const redirectUri = "https://spotify-clone-e15ef.web.app/";
 
 const clientId = "d3d7d29227e34e85a9795a29f9095b82";
 
